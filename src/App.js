@@ -1,4 +1,4 @@
-
+import {useState} from 'react';
 import './App.css';
 
 //simular un conjunto de datos
@@ -90,9 +90,65 @@ const emails =[
 
 
 function App() {
+
+  //definimos una interfaz que nos permita cambiar entre los conjuntos de datos
+
+  //Vamos a tener acceso de toda la informacion desde el inicio
+  const [data,setData]= useState(...people, ...calendar,...emails);
+
+  //Nuestra seleccion una vez que desplegamos el buscador
+  const [selection,setSelection]= useState(null);
+
+  //el estado inicial va a ser todos
+  const [currentOption, setCurrentOption]= useState('all');
+
+  function handleClick(e){
+    const op = e.target.name;
+  
+
+  //cuando le demos click a los botones vamos a cambiar nuestro setCurrentOption
+    switch(op){
+      case 'all':
+        setData([...people,...calendar,...emails]);
+        setCurrentOption('all');
+        break;
+
+      case 'people':
+        setData([...people]);
+        setCurrentOption('people');
+        break;
+
+      case 'calendar':
+        setData([...calendar]);
+        setCurrentOption('calendar');
+        break;
+         
+      case 'emails':
+        setData([...emails]);
+        setCurrentOption('emails');
+        break;
+        
+        
+        
+        default:
+        }    
+    }
+
   return (
+    /* le ponemos nombre porque vamos a utilizar un metodo para reconocer todos los botones*/
     <div>
-      Hola mundo
+        
+      <button onClick={handleClick} name="all" >All</button>
+      <button onClick={handleClick} name="people" >People</button>
+      <button onClick={handleClick} name="calendar" >Calendar</button>
+      <button onClick={handleClick} name="emails" >Emails</button>
+
+      <div>
+        {data.map((item)=>(
+         <div>{item.title}</div>
+         ))}
+      </div>
+    
     </div>
   );
 }
