@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import './App.css';
+import SearchBar from './components/searchBar';
 
 //simular un conjunto de datos
 const people =[
@@ -143,9 +144,7 @@ function App() {
       <button onClick={handleClick} name="calendar" >Calendar</button>
       <button onClick={handleClick} name="emails" >Emails</button>
 
-        <div>
-        /* esto no lo pude hacer */
-        </div>
+      <SearchBar  items={data}  onItemSelected={() =>{} } />
     
     </div>
   );

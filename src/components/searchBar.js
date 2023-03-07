@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Results from "./results";
 
 //en la funcion pedimos las props y un evento
 export default function SearchBar({items, onItemSelected}){
@@ -18,6 +19,10 @@ export default function SearchBar({items, onItemSelected}){
         return(
             <div>
                 <input type="text" onChange={handleChange} value={query} />
+                <Results items={items}
+                 onItemSelected={() => {}} 
+                 query = {query}
+                 onResultsCalculated={() => {}} />
             </div>
         )
 }
