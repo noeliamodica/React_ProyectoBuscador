@@ -16,13 +16,18 @@ export default function SearchBar({items, onItemSelected}){
         //esta va a ser la busqueda
         setQuery(value);
     }
+
+    function handleResults(items){
+        setResults(items);
+    }
         return(
             <div>
+                {results && <div>{results.length} results</div>}
                 <input type="text" onChange={handleChange} value={query} />
                 <Results items={items}
                  onItemSelected={() => {}} 
                  query = {query}
-                 onResultsCalculated={() => {}} />
+                 onResultsCalculated={handleResults} />
             </div>
         )
 }

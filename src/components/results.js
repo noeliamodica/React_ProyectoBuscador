@@ -1,23 +1,39 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+
+export default function Results({ items, onItemSelected, query, onResultsCalculated }) {
+  const [results, setResults] = useState([]);
+
+  const filteredItems = useMemo(() => getFilteredItems(items, query), [items, query]);
+
+    //para que cada vez que haga una consulta me diga cuantos elementos hay
+
+  useEffect(()=>{
+    onResultsCalculated(results);
+  }, [results]);
 
 
-export default function Results ({items, onItemSelected, query, onResultsCalculated}){
-
-    const [results, setResults] = useState([]);
-
-    //necesito hacer el calculo como un algoritmo de busqueda
-    //entre corchetes paso las dependencias, cdo cambie el estado de una de ellas cambiara el valor
-    const filteredItems = useMemo(() => findMatch(items, query), [items, query]) ;
-
-    //la funcion necesita dos parametros, los elementos donde va a buscar y el query
-    //quiero que se ejecute cuando la busqueda del texto cambia (query) o cdo cambio la fte de datos (items)
-    function findMatch (items, query){
-        console.log("hola");
+  function getFilteredItems(items, query) {
+    if (!query || query.length === 0) {
+      return [];
     }
+    
+    const lowerCaseQuery = query.toLowerCase();
+    const res = items.filter((i) => {
+      return i.title && i.title.toLowerCase().indexOf(lowerCaseQuery) >= 0;
+    });
 
-    return (
-        <div>
-            Hola
-        </div>
-    )
+    setResults(res);
+
+    return res;
+  }
+
+  return (
+    <div>
+      {query !== "" ? (
+        filteredItems.map((item) => <div key={item.id}>{item.title}</div>)
+      ) : (
+        ""
+      )}
+    </div>
+  );
 }
