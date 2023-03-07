@@ -33,7 +33,7 @@ export default function Results({ items, onItemSelected, query, onResultsCalcula
   return (
     <div>
       {query !== "" ? (
-        filteredItems.map((item) => <MarketItem key={item.id} item={item} OnClick={onItemSelected} />)
+        filteredItems.map((item) => <MarketItem key={item.id} item={item} query={query} OnClick={onItemSelected} />)
       ) : (
         ""
       )}
