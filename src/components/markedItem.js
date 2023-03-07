@@ -8,6 +8,15 @@ const StyledMarker = styled.span`
     border-radius: 2 px;
     `;
 
+const StyleItem = styled.button`
+    color: black;
+    display: block;
+    padding: 10 px;
+    border: none;
+    width: 100%;
+    text-decoration: none;
+`;
+
 
 export default function MarketItem ({item, query, OnClick }){
 
@@ -34,10 +43,10 @@ export default function MarketItem ({item, query, OnClick }){
     }
 
     return (
-        <button onClick={handleClick}>
+        <StyleItem onClick={handleClick}>
            {left} 
            <StyledMarker> {center} </StyledMarker>  
            {right} 
-        </button>
+        </StyleItem>
     )
 }
