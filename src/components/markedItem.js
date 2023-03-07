@@ -28,8 +28,13 @@ export default function MarketItem ({item, query, OnClick }){
             right,  
         }
     }
+
+    function handleClick(){
+        OnClick(item);
+    }
+
     return (
-        <button>
+        <button onClick={handleClick}>
            {left} 
            <StyledMarker> {center} </StyledMarker>  
            {right} 

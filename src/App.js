@@ -145,6 +145,9 @@ function App() {
         }    
     }
 
+    function handleItemSelected(item){
+        setSelection(item);
+    }
   return (
     /* le ponemos nombre porque vamos a utilizar un metodo para reconocer todos los botones*/
     <div>
@@ -154,7 +157,9 @@ function App() {
       <button onClick={handleClick} name="calendar" >Calendar</button>
       <button onClick={handleClick} name="emails" >Emails</button>
 
-      <SearchBar  items={data}  onItemSelected={() =>{} } />
+      {selection ? <div> You selected: {selection.title} </div> : '' }
+
+      <SearchBar  items={data}  onItemSelected={handleItemSelected } />
     
     </div>
   );

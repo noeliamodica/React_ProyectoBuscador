@@ -40,16 +40,14 @@ export default function SearchBar({items, onItemSelected}){
         setResults(items);
     }
 
-    function handleItemSelected(){
-
-    }
+    
         return(
             <SearchBarContainer>
                 {results && <div>{results.length} results</div>}
                 <StyledInput type="text" onChange={handleChange} value={query} >
                     </StyledInput>
                 <Results items={items}
-                 onItemSelected={handleItemSelected} 
+                 onItemSelected={onItemSelected} 
                  query = {query}
                  onResultsCalculated={handleResults} />
             </SearchBarContainer>
