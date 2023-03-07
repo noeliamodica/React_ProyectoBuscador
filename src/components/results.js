@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
+import MarketItem from "./markedItem";
 
 export default function Results({ items, onItemSelected, query, onResultsCalculated }) {
   const [results, setResults] = useState([]);
@@ -27,10 +28,12 @@ export default function Results({ items, onItemSelected, query, onResultsCalcula
     return res;
   }
 
+  
+
   return (
     <div>
       {query !== "" ? (
-        filteredItems.map((item) => <div key={item.id}>{item.title}</div>)
+        filteredItems.map((item) => <MarketItem key={item.id} item={item} OnClick={onItemSelected} />)
       ) : (
         ""
       )}
