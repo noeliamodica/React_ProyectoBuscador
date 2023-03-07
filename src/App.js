@@ -1,6 +1,16 @@
 import {useState} from 'react';
 import './App.css';
 import SearchBar from './components/searchBar';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: white;
+  border: solid 1 px #ccc;
+  cusor: pointer;
+`;
 
 //simular un conjunto de datos
 const people =[

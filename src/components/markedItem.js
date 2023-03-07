@@ -1,4 +1,14 @@
 import { useMemo } from "react";
+import styled from "styled-components";
+
+
+const StyledMarker = styled.span`
+    background-color: yellow;
+    font-weight: bolder;
+    border-radius: 2 px;
+    `;
+
+
 export default function MarketItem ({item, query, OnClick }){
 
     const {left, center, right} = useMemo(()=> getPositions (item, query), [item, query]);
@@ -21,7 +31,7 @@ export default function MarketItem ({item, query, OnClick }){
     return (
         <button>
            {left} 
-           <span style={{fontWeight: 'bolder', backgroundColor: 'yellow'}}> {center} </span>  
+           <StyledMarker> {center} </StyledMarker>  
            {right} 
         </button>
     )
